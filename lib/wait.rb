@@ -77,7 +77,8 @@ class Wait
         raise Wait::Error, "#{attempt}/#{attempts} attempts failed"
       else
         puts "Attempt #{attempt}/#{attempts} failed, delaying for #{delay}s" unless silent
-        sleep delay *= 2
+        sleep delay
+        delay *= 2
         retry
       end
     end
