@@ -40,7 +40,7 @@ needed.
   Seconds the block is permitted to execute. Default is 15.
 [:delay]
   Initial (grows exponentially) number of seconds to wait in between
-  attempts. Default is 0.5.
+  attempts. Default is 1.
 [:exceptions]
   Array of exceptions to rescue. Default is +Exception+ (all exceptions).
 [:silent]

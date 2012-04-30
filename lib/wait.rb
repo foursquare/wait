@@ -42,7 +42,7 @@ require 'timeout'
 #   Seconds the block is permitted to execute. Default is 15.
 # [:delay]
 #   Initial (grows exponentially) number of seconds to wait in between
-#   attempts. Default is 0.5.
+#   attempts. Default is 1.
 # [:exceptions]
 #   Array of exceptions to rescue. Default is +Exception+ (all exceptions).
 # [:silent]
@@ -60,7 +60,7 @@ class Wait
   def self.for(options = {})
     attempts    = options[:attempts] || 5
     timeout     = options[:timeout]  || 15
-    delay       = options[:delay]    || 0.5
+    delay       = options[:delay]    || 1
     exceptions  = options[:rescue]   || Exception
     silent      = options[:silent]   || false
 
