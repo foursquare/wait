@@ -2,7 +2,7 @@ require 'timeout'
 
 # Executes a block until there's a result.
 #
-#   Wait.for { rand(2).zero? }
+#   Wait.until { rand(2).zero? }
 #   => Rescued exception while waiting: Wait::Error: result was false
 #   => Attempt 1/5 failed, delaying for 0.5s
 #   => Rescued exception while waiting: Wait::Error: result was false
@@ -11,7 +11,7 @@ require 'timeout'
 #
 # By default, all exceptions are rescued.
 #
-#   Wait.for do
+#   Wait.until do
 #     if rand(2).zero?
 #       true
 #     else
@@ -25,7 +25,7 @@ require 'timeout'
 # The attempt counter is passed to the block if special conditionals are
 # needed.
 #
-#   Wait.for(:attempts => 3) { |attempt| puts Time.now if attempt == 3 }
+#   Wait.until(:attempts => 3) { |attempt| puts Time.now if attempt == 3 }
 #   => Rescued exception while waiting: Wait::Error: result was nil
 #   => Attempt 1/3 failed, delaying for 0.5s
 #   => Rescued exception while waiting: Wait::Error: result was nil
@@ -57,7 +57,7 @@ require 'timeout'
 
 class Wait
 
-  def self.for(options = {})
+  def self.until(options = {})
     attempts    = options[:attempts] || 5
     timeout     = options[:timeout]  || 15
     delay       = options[:delay]    || 1
@@ -91,7 +91,7 @@ class Wait
         retry
       end
     end
-  end #for
+  end
 
   class Error < StandardError; end
 

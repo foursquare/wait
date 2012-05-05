@@ -5,10 +5,10 @@ class WaitTest < Test::Unit::TestCase
 
   MILLISECOND = 0.001
 
-  # Test that the result of the block is the result of Wait.for.
+  # Test that the result of the block is the result of Wait.until.
   def test_result
     options = {:delay => MILLISECOND, :silent => true}
-    result = Wait.for(options) { 'foo' }
+    result = Wait.until(options) { 'foo' }
     assert_equal 'foo', result
   end
 
@@ -16,7 +16,7 @@ class WaitTest < Test::Unit::TestCase
   def test_exception
     options = {:delay => MILLISECOND, :silent => true}
     assert_raise Wait::Error do
-      Wait.for(options) { nil }
+      Wait.until(options) { nil }
     end
   end
 
@@ -28,7 +28,7 @@ class WaitTest < Test::Unit::TestCase
     delay = 0.1
 
     options = {:attempts => 4, :delay => delay, :silent => true}
-    result = Wait.for(options) do |attempt|
+    result = Wait.until(options) do |attempt|
       case attempt
       when 1
         t[1] = Time.now
@@ -53,7 +53,7 @@ class WaitTest < Test::Unit::TestCase
   # Test that a nil result is rescued.
   def test_rescuing_nil_result
     options = {:attempts => 2, :delay => MILLISECOND, :silent => true}
-    result = Wait.for(options) do |attempt|
+    result = Wait.until(options) do |attempt|
       case attempt
       when 1 then nil
       when 2 then 'foo'
@@ -65,7 +65,7 @@ class WaitTest < Test::Unit::TestCase
   # Test that a false result is rescued.
   def test_rescuing_false_result
     options = {:attempts => 2, :delay => MILLISECOND, :silent => true}
-    result = Wait.for(options) do |attempt|
+    result = Wait.until(options) do |attempt|
       case attempt
       when 1 then false
       when 2 then 'foo'
@@ -77,7 +77,7 @@ class WaitTest < Test::Unit::TestCase
   # Test that an exception is rescued.
   def test_rescuing_exception
     options = {:attempts => 2, :delay => MILLISECOND, :silent => true}
-    result = Wait.for(options) do |attempt|
+    result = Wait.until(options) do |attempt|
       case attempt
       when 1 then raise Exception
       when 2 then 'foo'
@@ -89,7 +89,7 @@ class WaitTest < Test::Unit::TestCase
   # Test that a timeout is rescued.
   def test_rescuing_timeout
     options = {:attempts => 2, :delay => MILLISECOND, :timeout => 1, :silent => true}
-    result = Wait.for(options) do |attempt|
+    result = Wait.until(options) do |attempt|
       case attempt
       when 1 then sleep
       when 2 then 'foo'
@@ -107,10 +107,10 @@ class WaitTest < Test::Unit::TestCase
       :silent   => true
     }
     assert_raise RuntimeError do
-      result = Wait.for(options) do |attempt|
+      result = Wait.until(options) do |attempt|
         case attempt
         # This nil tests that Wait::Error is rescued. Not doing so would
-        # alter the core behavior of Wait.for.
+        # alter the core behavior of Wait.until.
         when 1 then nil
         when 2 then raise RuntimeError
         end
@@ -127,10 +127,10 @@ class WaitTest < Test::Unit::TestCase
       :silent   => true
     }
     assert_raise RuntimeError do
-      result = Wait.for(options) do |attempt|
+      result = Wait.until(options) do |attempt|
         case attempt
         # This nil tests that Wait::Error is rescued. Not doing so would
-        # alter the core behavior of Wait.for.
+        # alter the core behavior of Wait.until.
         when 1 then nil
         when 2 then raise ArgumentError
         when 3 then raise RuntimeError
@@ -143,15 +143,15 @@ class WaitTest < Test::Unit::TestCase
   # performed here to prevent accidentally causing an infinite loop.
   def test_invalid_number_of_attempts
     assert_raise ArgumentError do
-      Wait.for(:attempts => 0) { nil }
+      Wait.until(:attempts => 0) { nil }
     end
 
     assert_raise ArgumentError do
-      Wait.for(:attempts => 1.1) { nil }
+      Wait.until(:attempts => 1.1) { nil }
     end
 
     assert_raise ArgumentError do
-      Wait.for(:attempts => '1') { nil }
+      Wait.until(:attempts => '1') { nil }
     end
   end
 
