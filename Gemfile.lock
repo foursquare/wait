@@ -1,0 +1,14 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    builder (3.0.0)
+    ci_reporter (1.7.0)
+      builder (>= 2.1.2)
+    test-unit (2.4.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ci_reporter
+  test-unit
