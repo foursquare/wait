@@ -1,27 +1,33 @@
 #!/bin/bash
 
 # ------------------------------------------------------------------------------
-# Configuration
+# Environment variables
 # ------------------------------------------------------------------------------
 
-# The location of RVM.
-RVM_PATH="$HOME/.rvm/scripts/rvm"
+RBENV_PATH="$HOME/.rbenv"
 
-if [ ! -f $RVM_PATH ]; then
-  echo "RVM not found: $RVM_PATH"
+if [ ! -d $RBENV_PATH ]; then
+  echo "rbenv path not found: $RBENV_PATH"
   exit 1
 fi
 
-# Source RVM so .rvmrc files will work.
-source $RVM_PATH
+# Add to PATH environment variable so rbenv command-line utility is available.
+export PATH="$RBENV_PATH/bin:$PATH"
 
-# Source the .rvmrc file.
-[[ -s ".rvmrc" ]] && source .rvmrc
+# ------------------------------------------------------------------------------
+# Configuration
+# ------------------------------------------------------------------------------
+
+# Enable rbenv shims and autocompletion.
+eval "$(rbenv init -)"
 
 # ------------------------------------------------------------------------------
 # Dependencies
 # ------------------------------------------------------------------------------
 
+# For debugging purposes, output the current version of Ruby, and from where
+# it was set.
+rbenv version
 # Install any gems the tests may require.
 bundle
 
@@ -30,4 +36,4 @@ bundle
 # ------------------------------------------------------------------------------
 
 # Run the tests.
-rake ci:setup:testunit test
+bundle exec rake ci:setup:testunit test
