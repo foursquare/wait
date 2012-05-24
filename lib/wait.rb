@@ -5,9 +5,9 @@ require 'logger'
 #
 #   Wait.until { rand(2).zero? }
 #   => Rescued exception while waiting: Wait::Error: result was false
-#   => Attempt 1/5 failed, delaying for 0.5s
+#   => Attempt 1/5 failed, delaying for 1s
 #   => Rescued exception while waiting: Wait::Error: result was false
-#   => Attempt 2/5 failed, delaying for 1.0s
+#   => Attempt 2/5 failed, delaying for 2s
 #   => true
 #
 # By default, all exceptions are rescued.
@@ -20,7 +20,7 @@ require 'logger'
 #     end
 #   end
 #   => Rescued exception while waiting: Exception: Exception
-#   => Attempt 1/5 failed, delaying for 0.5s
+#   => Attempt 1/5 failed, delaying for 1s
 #   => true
 #
 # The attempt counter is passed to the block if special conditionals are
@@ -28,9 +28,9 @@ require 'logger'
 #
 #   Wait.until(:attempts => 3) { |attempt| puts Time.now if attempt == 3 }
 #   => Rescued exception while waiting: Wait::Error: result was nil
-#   => Attempt 1/3 failed, delaying for 0.5s
+#   => Attempt 1/3 failed, delaying for 1s
 #   => Rescued exception while waiting: Wait::Error: result was nil
-#   => Attempt 2/3 failed, delaying for 1.0s
+#   => Attempt 2/3 failed, delaying for 2s
 #   => Sun Apr 29 10:03:17 -0400 2012
 #   => Rescued exception while waiting: Wait::Error: result was nil
 #   => Wait::Error: 3/3 attempts failed
