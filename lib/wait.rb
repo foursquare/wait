@@ -1,4 +1,5 @@
 require 'timeout'
+require 'logger'
 
 # Executes a block until there's a result.
 #
@@ -45,8 +46,8 @@ require 'timeout'
 #   attempts. Default is 1.
 # [:exceptions]
 #   Array of exceptions to rescue. Default is +Exception+ (all exceptions).
-# [:silent]
-#   If +true+, silences output. Default is +false+.
+# [:debug]
+#   If +true+, logs debugging output. Default is +true+.
 #
 # == Returns
 #
@@ -62,12 +63,15 @@ class Wait
     timeout     = options[:timeout]  || 15
     delay       = options[:delay]    || 1
     exceptions  = options[:rescue]   || Exception
-    silent      = options[:silent]   || false
+    debug       = options[:debug]    || true
 
     # Prevent accidentally causing an infinite loop.
     unless attempts.is_a?(Fixnum) && attempts > 0
       raise ArgumentError, 'invalid number of attempts'
     end
+
+    logger = Logger.new(STDOUT)
+    logger.level = debug ? Logger::DEBUG : Logger::WARN
 
     # Initialize the attempt counter.
     attempt = 0
@@ -77,15 +81,13 @@ class Wait
       result = Timeout.timeout(timeout) { yield attempt }
       result ? result : raise(Wait::Error, "result was #{result.inspect}")
     rescue Wait::Error, *exceptions => exception
-      unless silent
-        puts "Rescued exception while waiting: #{exception.class.name}: #{exception.message}"
-        puts exception.backtrace.join("\n")
-      end
+      logger.debug "Rescued exception while waiting: #{exception.class.name}: #{exception.message}"
+      logger.debug exception.backtrace.join("\n")
 
       if attempt == attempts
         raise Wait::Error, "#{attempt}/#{attempts} attempts failed"
       else
-        puts "Attempt #{attempt}/#{attempts} failed, delaying for #{delay}s" unless silent
+        logger.debug "Attempt #{attempt}/#{attempts} failed, delaying for #{delay}s"
         sleep delay
         delay *= 2
         retry
