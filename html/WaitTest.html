@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: WaitTest</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./test/test_wait_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="test/test_wait.rb">test/test_wait.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Test::Unit::TestCase</p>
+        
+      </div>
+      
+
+      
+
+      
+      <!-- Namespace Contents -->
+      <div id="namespace-list-section" class="section">
+        <h3 class="section-header">Namespace</h3>
+        <ul class="link-list">
+          
+          <li><span class="type">CLASS</span> <a href="WaitTest/TestErrorBar.html">WaitTest::TestErrorBar</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="WaitTest/TestErrorFoo.html">WaitTest::TestErrorFoo</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-test_attempts_option_invalid_number_of_attempts">#test_attempts_option_invalid_number_of_attempts</a></li>
+          
+          <li><a href="#method-i-test_delays">#test_delays</a></li>
+          
+          <li><a href="#method-i-test_no_result_exception">#test_no_result_exception</a></li>
+          
+          <li><a href="#method-i-test_other_exception">#test_other_exception</a></li>
+          
+          <li><a href="#method-i-test_rescue_option_no_result_error_always_rescued">#test_rescue_option_no_result_error_always_rescued</a></li>
+          
+          <li><a href="#method-i-test_rescue_option_not_rescuing_any_exceptions">#test_rescue_option_not_rescuing_any_exceptions</a></li>
+          
+          <li><a href="#method-i-test_rescue_option_rescuing_particular_exception">#test_rescue_option_rescuing_particular_exception</a></li>
+          
+          <li><a href="#method-i-test_rescue_option_timeout_error_always_rescued">#test_rescue_option_timeout_error_always_rescued</a></li>
+          
+          <li><a href="#method-i-test_rescuing_exception">#test_rescuing_exception</a></li>
+          
+          <li><a href="#method-i-test_rescuing_false_result">#test_rescuing_false_result</a></li>
+          
+          <li><a href="#method-i-test_rescuing_nil_result">#test_rescuing_nil_result</a></li>
+          
+          <li><a href="#method-i-test_rescuing_timeout">#test_rescuing_timeout</a></li>
+          
+          <li><a href="#method-i-test_result">#test_result</a></li>
+          
+          <li><a href="#method-i-test_timeout_exception">#test_timeout_exception</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./Gemfile.html">Gemfile</a></li>
+        
+          <li class="file"><a href="./LICENCE.html">LICENCE</a></li>
+        
+          <li class="file"><a href="./NOTICE.html">NOTICE</a></li>
+        
+          <li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./Wait.html">Wait</a></li>
+        
+          <li><a href="./Wait/NoResultError.html">Wait::NoResultError</a></li>
+        
+          <li><a href="./Wait/TimeoutError.html">Wait::TimeoutError</a></li>
+        
+          <li><a href="./WaitTest.html">WaitTest</a></li>
+        
+          <li><a href="./WaitTest/TestErrorBar.html">WaitTest::TestErrorBar</a></li>
+        
+          <li><a href="./WaitTest/TestErrorFoo.html">WaitTest::TestErrorFoo</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">WaitTest</h1>
+
+    <div id="description" class="description">
+      
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="MILLISECOND">MILLISECOND</a></dt>
+          
+          <dd class="description"><p>1 millisecond, in seconds.</p></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="test_attempts_option_invalid_number_of_attempts-method" class="method-detail ">
+          <a name="method-i-test_attempts_option_invalid_number_of_attempts"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_attempts_option_invalid_number_of_attempts</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test a few combinations of invalid number of attempts. Validation is
+performed here to prevent accidentally causing an infinite loop.</p>
+            
+
+            
+            <div class="method-source-code" id="test_attempts_option_invalid_number_of_attempts-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 187</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_attempts_option_invalid_number_of_attempts</span>
+  <span class="ruby-identifier">assert_raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>).<span class="ruby-identifier">until</span> { <span class="ruby-keyword">nil</span> }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1.1</span>).<span class="ruby-identifier">until</span> { <span class="ruby-keyword">nil</span> }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1.1</span>).<span class="ruby-identifier">until</span> { <span class="ruby-keyword">nil</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_attempts_option_invalid_number_of_attempts-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_attempts_option_invalid_number_of_attempts-method -->
+
+      
+        <div id="test_delays-method" class="method-detail ">
+          <a name="method-i-test_delays"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_delays</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that delays are inserted between each attempt and that they grow
+exponentially.</p>
+            
+
+            
+            <div class="method-source-code" id="test_delays-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_delays</span>
+  <span class="ruby-comment"># Initialize a variable to store timing information.</span>
+  <span class="ruby-identifier">t</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">5</span>)
+  <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>] = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+
+  <span class="ruby-comment"># The delay to start with.</span>
+  <span class="ruby-identifier">delay</span> = <span class="ruby-value">0.1</span>
+
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">delay</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">t</span>[<span class="ruby-identifier">attempt</span>] = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+    <span class="ruby-comment"># Return false to raise Wait::NoResultError and move on to the next</span>
+    <span class="ruby-comment"># attempt.</span>
+    <span class="ruby-identifier">attempt</span> <span class="ruby-operator">==</span> <span class="ruby-value">4</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>,          (<span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">-</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">0</span>]).<span class="ruby-identifier">round</span>(<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">delay</span>,      (<span class="ruby-identifier">t</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">-</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">round</span>(<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">delay</span> <span class="ruby-operator">*=</span> <span class="ruby-value">2</span>, (<span class="ruby-identifier">t</span>[<span class="ruby-value">3</span>] <span class="ruby-operator">-</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">2</span>]).<span class="ruby-identifier">round</span>(<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">delay</span> <span class="ruby-operator">*=</span> <span class="ruby-value">2</span>, (<span class="ruby-identifier">t</span>[<span class="ruby-value">4</span>] <span class="ruby-operator">-</span> <span class="ruby-identifier">t</span>[<span class="ruby-value">3</span>]).<span class="ruby-identifier">round</span>(<span class="ruby-value">1</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_delays-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_delays-method -->
+
+      
+        <div id="test_no_result_exception-method" class="method-detail ">
+          <a name="method-i-test_no_result_exception"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_no_result_exception</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that <a href="Wait/NoResultError.html">Wait::NoResultError</a> is
+raised when the last attempt has no result.</p>
+            
+
+            
+            <div class="method-source-code" id="test_no_result_exception-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_no_result_exception</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">assert_raise</span> <span class="ruby-constant">Wait</span><span class="ruby-operator">::</span><span class="ruby-constant">NoResultError</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> { <span class="ruby-keyword">nil</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_no_result_exception-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_no_result_exception-method -->
+
+      
+        <div id="test_other_exception-method" class="method-detail ">
+          <a name="method-i-test_other_exception"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_other_exception</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that <a href="WaitTest/TestErrorFoo.html">WaitTest::TestErrorFoo</a>
+is raised when the last attempt raises <a
+href="WaitTest/TestErrorFoo.html">WaitTest::TestErrorFoo</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="test_other_exception-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_other_exception</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">assert_raise</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorFoo</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> { <span class="ruby-identifier">raise</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorFoo</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_other_exception-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_other_exception-method -->
+
+      
+        <div id="test_rescue_option_no_result_error_always_rescued-method" class="method-detail ">
+          <a name="method-i-test_rescue_option_no_result_error_always_rescued"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_rescue_option_no_result_error_always_rescued</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test the <tt>:rescue</tt> option: ensure that <a
+href="Wait/NoResultError.html">Wait::NoResultError</a> is always rescued.</p>
+            
+
+            
+            <div class="method-source-code" id="test_rescue_option_no_result_error_always_rescued-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rescue_option_no_result_error_always_rescued</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-value">:rescue</span> =<span class="ruby-operator">&gt;</span> []}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">attempt</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-string">'foo'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-string">'foo'</span>, <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_rescue_option_no_result_error_always_rescued-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_rescue_option_no_result_error_always_rescued-method -->
+
+      
+        <div id="test_rescue_option_not_rescuing_any_exceptions-method" class="method-detail ">
+          <a name="method-i-test_rescue_option_not_rescuing_any_exceptions"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_rescue_option_not_rescuing_any_exceptions</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test the <tt>:rescue</tt> option: don’t rescue any exceptions.</p>
+            
+
+            
+            <div class="method-source-code" id="test_rescue_option_not_rescuing_any_exceptions-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 130</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rescue_option_not_rescuing_any_exceptions</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-value">:rescue</span> =<span class="ruby-operator">&gt;</span> []}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">assert_raise</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorFoo</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">case</span> <span class="ruby-identifier">attempt</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorFoo</span> <span class="ruby-comment"># should be raised</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-string">'foo'</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_rescue_option_not_rescuing_any_exceptions-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_rescue_option_not_rescuing_any_exceptions-method -->
+
+      
+        <div id="test_rescue_option_rescuing_particular_exception-method" class="method-detail ">
+          <a name="method-i-test_rescue_option_rescuing_particular_exception"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_rescue_option_rescuing_particular_exception</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test the <tt>:rescue</tt> option: only rescue a particular exception.</p>
+            
+
+            
+            <div class="method-source-code" id="test_rescue_option_rescuing_particular_exception-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rescue_option_rescuing_particular_exception</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-value">:rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorFoo</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">assert_raise</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorBar</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">case</span> <span class="ruby-identifier">attempt</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorFoo</span> <span class="ruby-comment"># should be rescued</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorBar</span> <span class="ruby-comment"># should be raised</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-value">3</span> <span class="ruby-keyword">then</span> <span class="ruby-string">'foo'</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_rescue_option_rescuing_particular_exception-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_rescue_option_rescuing_particular_exception-method -->
+
+      
+        <div id="test_rescue_option_timeout_error_always_rescued-method" class="method-detail ">
+          <a name="method-i-test_rescue_option_timeout_error_always_rescued"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_rescue_option_timeout_error_always_rescued</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test the <tt>:rescue</tt> option: ensure that <a
+href="Wait/TimeoutError.html">Wait::TimeoutError</a> is always rescued.</p>
+            
+
+            
+            <div class="method-source-code" id="test_rescue_option_timeout_error_always_rescued-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rescue_option_timeout_error_always_rescued</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-value">:rescue</span> =<span class="ruby-operator">&gt;</span> [], <span class="ruby-value">:timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">attempt</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">sleep</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-string">'foo'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-string">'foo'</span>, <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_rescue_option_timeout_error_always_rescued-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_rescue_option_timeout_error_always_rescued-method -->
+
+      
+        <div id="test_rescuing_exception-method" class="method-detail ">
+          <a name="method-i-test_rescuing_exception"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_rescuing_exception</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that an exception is rescued.</p>
+            
+
+            
+            <div class="method-source-code" id="test_rescuing_exception-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rescuing_exception</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">attempt</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">WaitTest</span><span class="ruby-operator">::</span><span class="ruby-constant">TestErrorFoo</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-string">'foo'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-string">'foo'</span>, <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_rescuing_exception-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_rescuing_exception-method -->
+
+      
+        <div id="test_rescuing_false_result-method" class="method-detail ">
+          <a name="method-i-test_rescuing_false_result"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_rescuing_false_result</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that a <tt>false</tt> result is rescued.</p>
+            
+
+            
+            <div class="method-source-code" id="test_rescuing_false_result-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rescuing_false_result</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">attempt</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-string">'foo'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-string">'foo'</span>, <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_rescuing_false_result-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_rescuing_false_result-method -->
+
+      
+        <div id="test_rescuing_nil_result-method" class="method-detail ">
+          <a name="method-i-test_rescuing_nil_result"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_rescuing_nil_result</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that a <tt>nil</tt> result is rescued.</p>
+            
+
+            
+            <div class="method-source-code" id="test_rescuing_nil_result-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rescuing_nil_result</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">attempt</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-string">'foo'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-string">'foo'</span>, <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_rescuing_nil_result-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_rescuing_nil_result-method -->
+
+      
+        <div id="test_rescuing_timeout-method" class="method-detail ">
+          <a name="method-i-test_rescuing_timeout"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_rescuing_timeout</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that a timeout is rescued.</p>
+            
+
+            
+            <div class="method-source-code" id="test_rescuing_timeout-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rescuing_timeout</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-value">:timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attempt</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">attempt</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">sleep</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span> <span class="ruby-string">'foo'</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-string">'foo'</span>, <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_rescuing_timeout-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_rescuing_timeout-method -->
+
+      
+        <div id="test_result-method" class="method-detail ">
+          <a name="method-i-test_result"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_result</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that the result of the block is the result of <a
+href="Wait.html#method-i-until">Wait#until</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="test_result-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_result</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> { <span class="ruby-string">'foo'</span> }
+  <span class="ruby-identifier">assert_equal</span> <span class="ruby-string">'foo'</span>, <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_result-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_result-method -->
+
+      
+        <div id="test_timeout_exception-method" class="method-detail ">
+          <a name="method-i-test_timeout_exception"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">test_timeout_exception</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Test that <a href="Wait/TimeoutError.html">Wait::TimeoutError</a> is raised
+when the last attempt times out.</p>
+            
+
+            
+            <div class="method-source-code" id="test_timeout_exception-source">
+<pre>
+<span class="ruby-comment"># File test/test_wait.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_timeout_exception</span>
+  <span class="ruby-identifier">options</span> = {<span class="ruby-value">:delay</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">MILLISECOND</span>, <span class="ruby-value">:attempts</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-value">:timeout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+  <span class="ruby-identifier">wait</span> = <span class="ruby-constant">Wait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">assert_raise</span> <span class="ruby-constant">Wait</span><span class="ruby-operator">::</span><span class="ruby-constant">TimeoutError</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">wait</span>.<span class="ruby-identifier">until</span> { <span class="ruby-identifier">sleep</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- test_timeout_exception-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- test_timeout_exception-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+
