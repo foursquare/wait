@@ -1,7 +1,7 @@
 require 'rake/testtask'
 require 'rdoc/task'
 require 'bundler/setup'
-Bundler.require
+Bundler.require(:test)
 
 Rake::TestTask.new do |task|
   task.libs << 'test'

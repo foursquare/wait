@@ -13,6 +13,7 @@ GEM
       posix-spawn (~> 0.3.6)
     mime-types (1.18)
     posix-spawn (0.3.6)
+    rake (0.9.2.2)
     test-unit (2.4.8)
 
 PLATFORMS
@@ -21,4 +22,5 @@ PLATFORMS
 DEPENDENCIES
   ci_reporter
   gokdok
+  rake
   test-unit
