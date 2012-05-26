@@ -43,4 +43,4 @@ end
 
 ## Documentation
 
-RDoc-formatted documentation available [here](http://foo.com).
+RDoc-formatted documentation available [here](http://foursquare.github.com/wait/).
