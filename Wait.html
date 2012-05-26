@@ -185,18 +185,17 @@
 <h2>Options</h2>
 <dl class="rdoc-list"><dt>:attempts</dt>
 <dd>
-<p>Number of times to attempt the block. Default is 5.</p>
+<p>Number of times to attempt the block. Default is <tt>5</tt>.</p>
 </dd><dt>:timeout</dt>
 <dd>
-<p>Seconds the block is permitted to execute. Default is 15.</p>
+<p>Seconds until the block times out. Default is <tt>15</tt>.</p>
 </dd><dt>:delay</dt>
 <dd>
-<p>Initial (grows exponentially) number of seconds to wait in between
-attempts. Default is 1.</p>
+<p>Initial (grows exponentially) delay (in seconds) to wait in between
+attempts. Default is <tt>1</tt>.</p>
 </dd><dt>:rescue</dt>
 <dd>
-<p>One or an array of exceptions to rescue. Default is <tt>Exception</tt> (all
-exceptions).</p>
+<p>One or an array of exceptions to rescue. Default is <tt>nil</tt>.</p>
 </dd><dt>:debug</dt>
 <dd>
 <p>If <tt>true</tt>, logs debugging output. Default is <tt>false</tt>.</p>
@@ -206,12 +205,12 @@ exceptions).</p>
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/wait.rb, line 23</span>
+<span class="ruby-comment"># File lib/wait.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
   <span class="ruby-ivar">@attempts</span>   = <span class="ruby-identifier">options</span>[<span class="ruby-value">:attempts</span>] <span class="ruby-operator">||</span> <span class="ruby-value">5</span>
   <span class="ruby-ivar">@timeout</span>    = <span class="ruby-identifier">options</span>[<span class="ruby-value">:timeout</span>]  <span class="ruby-operator">||</span> <span class="ruby-value">15</span>
   <span class="ruby-ivar">@delay</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-value">:delay</span>]    <span class="ruby-operator">||</span> <span class="ruby-value">1</span>
-  <span class="ruby-ivar">@exceptions</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:rescue</span>]   <span class="ruby-operator">||</span> <span class="ruby-constant">Exception</span>
+  <span class="ruby-ivar">@exceptions</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:rescue</span>]
   <span class="ruby-identifier">debug</span>       = <span class="ruby-identifier">options</span>[<span class="ruby-value">:debug</span>]    <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
 
   <span class="ruby-comment"># Prevent accidentally causing an infinite loop.</span>
@@ -253,10 +252,10 @@ exceptions).</p>
             
             <h2>Description</h2>
 
-<p>Executes a block until there’s a result. Useful for blocking script
-execution until:</p>
+<p><a href="Wait.html#method-i-until">Wait#until</a> executes a block until
+there's a result. Useful for blocking script execution until:</p>
 <ul><li>
-<p>an HTTP request is successful</p>
+<p>an HTTP request was successful</p>
 </li><li>
 <p>a port has opened</p>
 </li><li>
@@ -267,27 +266,30 @@ execution until:</p>
 
 <h2>Examples</h2>
 
-<pre>wait = Wait.new(:debug =&gt; true)
-wait.until { rand(2).zero? }
-=&gt; Rescued exception while waiting: Wait::NoResultError: result was false
-=&gt; Attempt 1/5 failed, delaying for 1s
-=&gt; Rescued exception while waiting: Wait::NoResultError: result was false
-=&gt; Attempt 2/5 failed, delaying for 2s
-=&gt; true</pre>
+<pre>wait = Wait.new
+# =&gt; #&lt;Wait&gt;
+wait.until { Time.now.sec.even? }
+# Rescued exception while waiting: Wait::NoResultError: result was false
+# Attempt 1/5 failed, delaying for 1s
+# =&gt; true</pre>
 
-<p>By default, all exceptions are rescued (the <tt>Exception</tt> class).
-However, the exception from the last attempt made is always raised.</p>
+<p>If you wish to handle an exception by attempting the block again, pass one
+or an array of exceptions with the <tt>:rescue</tt> option.</p>
 
-<pre>wait = Wait.new(:debug =&gt; true, :attempts =&gt; 3)
+<pre>wait = Wait.new(:rescue =&gt; RuntimeError)
+# =&gt; #&lt;Wait&gt;
 wait.until do |attempt|
-  (attempt == 3) ? raise('raised!') : raise('rescued!')
+  case attempt
+  when 1 then nil
+  when 2 then raise RuntimeError
+  when 3 then 'foo'
+  end
 end
-=&gt; Rescued exception while waiting: RuntimeError: rescued!
-=&gt; Attempt 1/3 failed, delaying for 1s
-=&gt; Rescued exception while waiting: RuntimeError: rescued!
-=&gt; Attempt 2/3 failed, delaying for 2s
-=&gt; Rescued exception while waiting: RuntimeError: raised!
-=&gt; RuntimeError: raised!</pre>
+# Rescued exception while waiting: Wait::NoResultError: result was nil
+# Attempt 1/5 failed, delaying for 1s
+# Rescued exception while waiting: RuntimeError: RuntimeError
+# Attempt 2/5 failed, delaying for 2s
+# =&gt; &quot;foo&quot;</pre>
 
 <h2>Returns</h2>
 
@@ -301,7 +303,7 @@ end
             
             <div class="method-source-code" id="until-source">
 <pre>
-<span class="ruby-comment"># File lib/wait.rb, line 80</span>
+<span class="ruby-comment"># File lib/wait.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">until</span>(&amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-comment"># Initialize the attempt and delay counters.</span>
   <span class="ruby-identifier">attempt</span> = <span class="ruby-value">0</span>
