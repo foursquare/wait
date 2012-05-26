@@ -6,7 +6,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-  <title>File: NOTICE [Wait]</title>
+  <title>File: Rakefile [Wait gem]</title>
 
   <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
 
@@ -88,19 +88,29 @@
 
   <div id="documentation">
     
-<p>Copyright © 2012, Foursquare Labs, Inc.</p>
+<p>require ‘rake/testtask’ require ‘rake/rdoctask’ require ‘bundler/setup’
+Bundler.require</p>
 
-<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not
-use this file except in compliance with the License. You may obtain a copy
-of the License at</p>
+<p>Rake::TestTask.new do |task|</p>
 
-<pre>http://www.apache.org/licenses/LICENSE-2.0</pre>
+<pre>task.libs &lt;&lt; 'test'</pre>
 
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-License for the specific language governing permissions and limitations
-under the License.</p>
+<p>end</p>
+
+<p>Rake::RDocTask.new do |rd|</p>
+
+<pre>rd.title = 'Wait gem'</pre>
+
+<p>end</p>
+
+<p>Gokdok::Dokker.new do |gd|</p>
+
+<pre>gd.repo_url = 'git@github.com:foursquare/wait.git'
+gd.remote_path = './'</pre>
+
+<p>end</p>
+
+<p>desc ‘Run tests’ task :default =&gt; :test</p>
 
   </div>
 
