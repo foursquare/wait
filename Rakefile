@@ -8,6 +8,7 @@ Rake::TestTask.new do |task|
 end
 
 Rake::RDocTask.new do |rd|
+  rd.title = 'Wait'
 end
 
 Gokdok::Dokker.new do |gd|

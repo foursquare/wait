@@ -6,7 +6,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-  <title>File: Rakefile [RDoc Documentation]</title>
+  <title>File: Rakefile [Wait]</title>
 
   <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
 
@@ -97,7 +97,11 @@ Bundler.require</p>
 
 <p>end</p>
 
-<p>Rake::RDocTask.new do |rd| end</p>
+<p>Rake::RDocTask.new do |rd|</p>
+
+<pre>rd.title = 'Wait'</pre>
+
+<p>end</p>
 
 <p>Gokdok::Dokker.new do |gd|</p>
 
