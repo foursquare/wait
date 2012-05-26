@@ -6,6 +6,14 @@ Executes a block until there's a result. Useful for blocking script execution un
 * an external process has started
 * etc.
 
+## Installation
+
+Add to your `Gemfile`:
+
+```ruby
+gem 'wait', :git => 'git@github.com:foursquare/wait.git'
+```
+
 ## Examples
 
 ```ruby
