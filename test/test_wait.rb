@@ -14,15 +14,15 @@ class WaitTest < Test::Unit::TestCase
 
   # Test that the result of the block is the result of Wait#until.
   def test_result
-    options = {:delay => MILLISECOND}
+    options = {:delay => MILLISECOND, :attempts => 1}
     wait = Wait.new(options)
     result = wait.until { 'foo' }
     assert_equal 'foo', result
   end
 
-  # Test that Wait::NoResultError is raised when the last attempt has no
+  # Test that Wait::NoResultError is raised when the last attempt returns no
   # result.
-  def test_no_result_exception
+  def test_raising_no_result
     options = {:delay => MILLISECOND, :attempts => 1}
     wait = Wait.new(options)
     assert_raise Wait::NoResultError do
@@ -31,7 +31,7 @@ class WaitTest < Test::Unit::TestCase
   end
 
   # Test that Wait::TimeoutError is raised when the last attempt times out.
-  def test_timeout_exception
+  def test_raising_timeout
     options = {:delay => MILLISECOND, :attempts => 1, :timeout => 1}
     wait = Wait.new(options)
     assert_raise Wait::TimeoutError do
@@ -41,8 +41,8 @@ class WaitTest < Test::Unit::TestCase
 
   # Test that WaitTest::TestErrorFoo is raised when the last attempt raises
   # WaitTest::TestErrorFoo.
-  def test_other_exception
-    options = {:delay => MILLISECOND, :attempts => 1}
+  def test_raising_other
+    options = {:delay => MILLISECOND, :attempts => 1, :rescue => WaitTest::TestErrorFoo}
     wait = Wait.new(options)
     assert_raise WaitTest::TestErrorFoo do
       wait.until { raise WaitTest::TestErrorFoo }
@@ -100,19 +100,6 @@ class WaitTest < Test::Unit::TestCase
     assert_equal 'foo', result
   end
 
-  # Test that an exception is rescued.
-  def test_rescuing_exception
-    options = {:delay => MILLISECOND, :attempts => 2}
-    wait = Wait.new(options)
-    result = wait.until do |attempt|
-      case attempt
-      when 1 then raise WaitTest::TestErrorFoo
-      when 2 then 'foo'
-      end
-    end
-    assert_equal 'foo', result
-  end
-
   # Test that a timeout is rescued.
   def test_rescuing_timeout
     options = {:delay => MILLISECOND, :attempts => 2, :timeout => 1}
@@ -126,65 +113,38 @@ class WaitTest < Test::Unit::TestCase
     assert_equal 'foo', result
   end
 
-  # Test the +:rescue+ option: don't rescue any exceptions.
-  def test_rescue_option_not_rescuing_any_exceptions
-    options = {:delay => MILLISECOND, :attempts => 2, :rescue => []}
+  # Test that an exception specified by the +:rescue+ option
+  # (WaitTest::TestErrorFoo) is rescued.
+  def test_rescuing_exception_specified_by_rescue_option
+    options = {:delay => MILLISECOND, :attempts => 2, :rescue => WaitTest::TestErrorFoo}
     wait = Wait.new(options)
-    assert_raise WaitTest::TestErrorFoo do
+    result = wait.until do |attempt|
+      case attempt
+      when 1 then raise WaitTest::TestErrorFoo
+      when 2 then 'foo'
+      end
+    end
+    assert_equal 'foo', result
+  end
+
+  # Test that an exception *not* specified by the +:rescue+ option
+  # (WaitTest::TestErrorBar) is *not* rescued.
+  def test_not_rescuing_exception_not_specified_by_rescue_option
+    options = {:delay => MILLISECOND, :attempts => 2, :rescue => WaitTest::TestErrorFoo}
+    wait = Wait.new(options)
+    assert_raise WaitTest::TestErrorBar do
       wait.until do |attempt|
         case attempt
-        when 1 then raise WaitTest::TestErrorFoo # should be raised
+        when 1 then raise WaitTest::TestErrorBar
         when 2 then 'foo'
         end
       end
     end
   end
 
-  # Test the +:rescue+ option: only rescue a particular exception.
-  def test_rescue_option_rescuing_particular_exception
-    options = {:delay => MILLISECOND, :attempts => 2, :rescue => WaitTest::TestErrorFoo}
-    wait = Wait.new(options)
-    assert_raise WaitTest::TestErrorBar do
-      wait.until do |attempt|
-        case attempt
-        when 1 then raise WaitTest::TestErrorFoo # should be rescued
-        when 2 then raise WaitTest::TestErrorBar # should be raised
-        when 3 then 'foo'
-        end
-      end
-    end
-  end
-
-  # Test the +:rescue+ option: ensure that Wait::NoResultError is always rescued.
-  def test_rescue_option_no_result_error_always_rescued
-    options = {:delay => MILLISECOND, :attempts => 2, :rescue => []}
-    wait = Wait.new(options)
-    result = wait.until do |attempt|
-      case attempt
-      when 1 then nil
-      when 2 then 'foo'
-      end
-    end
-    assert_equal 'foo', result
-  end
-
-  # Test the +:rescue+ option: ensure that Wait::TimeoutError is always
-  # rescued.
-  def test_rescue_option_timeout_error_always_rescued
-    options = {:delay => MILLISECOND, :attempts => 2, :rescue => [], :timeout => 1}
-    wait = Wait.new(options)
-    result = wait.until do |attempt|
-      case attempt
-      when 1 then sleep
-      when 2 then 'foo'
-      end
-    end
-    assert_equal 'foo', result
-  end
-
   # Test a few combinations of invalid number of attempts. Validation is
   # performed here to prevent accidentally causing an infinite loop.
-  def test_attempts_option_invalid_number_of_attempts
+  def test_invalid_number_of_attempts
     assert_raise ArgumentError do
       Wait.new(:attempts => 0).until { nil }
     end

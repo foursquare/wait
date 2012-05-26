@@ -8,15 +8,14 @@ class Wait
   # == Options
   #
   # [:attempts]
-  #   Number of times to attempt the block. Default is 5.
+  #   Number of times to attempt the block. Default is +5+.
   # [:timeout]
-  #   Seconds the block is permitted to execute. Default is 15.
+  #   Seconds until the block times out. Default is +15+.
   # [:delay]
-  #   Initial (grows exponentially) number of seconds to wait in between
-  #   attempts. Default is 1.
+  #   Initial (grows exponentially) delay (in seconds) to wait in between
+  #   attempts. Default is +1+.
   # [:rescue]
-  #   One or an array of exceptions to rescue. Default is +Exception+ (all
-  #   exceptions).
+  #   One or an array of exceptions to rescue. Default is +nil+.
   # [:debug]
   #   If +true+, logs debugging output. Default is +false+.
   #
@@ -24,7 +23,7 @@ class Wait
     @attempts   = options[:attempts] || 5
     @timeout    = options[:timeout]  || 15
     @delay      = options[:delay]    || 1
-    @exceptions = options[:rescue]   || Exception
+    @exceptions = options[:rescue]
     debug       = options[:debug]    || false
 
     # Prevent accidentally causing an infinite loop.
@@ -38,36 +37,39 @@ class Wait
 
   # == Description
   #
-  # Executes a block until there's a result. Useful for blocking script
-  # execution until:
-  # * an HTTP request is successful
+  # Wait#until executes a block until there's a result. Useful for blocking
+  # script execution until:
+  # * an HTTP request was successful
   # * a port has opened
   # * an external process has started
   # * etc.
   #
   # == Examples
   #
-  #   wait = Wait.new(:debug => true)
-  #   wait.until { rand(2).zero? }
-  #   => Rescued exception while waiting: Wait::NoResultError: result was false
-  #   => Attempt 1/5 failed, delaying for 1s
-  #   => Rescued exception while waiting: Wait::NoResultError: result was false
-  #   => Attempt 2/5 failed, delaying for 2s
-  #   => true
+  #   wait = Wait.new
+  #   # => #<Wait>
+  #   wait.until { Time.now.sec.even? }
+  #   # Rescued exception while waiting: Wait::NoResultError: result was false
+  #   # Attempt 1/5 failed, delaying for 1s
+  #   # => true
   #
-  # By default, all exceptions are rescued (the +Exception+ class). However,
-  # the exception from the last attempt made is always raised.
+  # If you wish to handle an exception by attempting the block again, pass one
+  # or an array of exceptions with the +:rescue+ option.
   #
-  #   wait = Wait.new(:debug => true, :attempts => 3)
+  #   wait = Wait.new(:rescue => RuntimeError)
+  #   # => #<Wait>
   #   wait.until do |attempt|
-  #     (attempt == 3) ? raise('raised!') : raise('rescued!')
+  #     case attempt
+  #     when 1 then nil
+  #     when 2 then raise RuntimeError
+  #     when 3 then 'foo'
+  #     end
   #   end
-  #   => Rescued exception while waiting: RuntimeError: rescued!
-  #   => Attempt 1/3 failed, delaying for 1s
-  #   => Rescued exception while waiting: RuntimeError: rescued!
-  #   => Attempt 2/3 failed, delaying for 2s
-  #   => Rescued exception while waiting: RuntimeError: raised!
-  #   => RuntimeError: raised!
+  #   # Rescued exception while waiting: Wait::NoResultError: result was nil
+  #   # Attempt 1/5 failed, delaying for 1s
+  #   # Rescued exception while waiting: RuntimeError: RuntimeError
+  #   # Attempt 2/5 failed, delaying for 2s
+  #   # => "foo"
   #
   # == Returns
   #

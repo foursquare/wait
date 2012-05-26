@@ -1,7 +1,7 @@
 ## Description
 
-Executes a block until there's a result. Useful for blocking script execution until:
-* an HTTP request is successful
+The wait gem executes a block until there's a result. Useful for blocking script execution until:
+* an HTTP request was successful
 * a port has opened
 * an external process has started
 * etc.
@@ -17,38 +17,48 @@ gem 'wait', :git => 'git@github.com:foursquare/wait.git'
 ## Examples
 
 ```ruby
-wait = Wait.new(:debug => true)
-wait.until { rand(2).zero? }
-# => Rescued exception while waiting: Wait::NoResultError: result was false
-# => Attempt 1/5 failed, delaying for 1s
-# => Rescued exception while waiting: Wait::NoResultError: result was false
-# => Attempt 2/5 failed, delaying for 2s
+wait = Wait.new
+# => #<Wait>
+wait.until { Time.now.sec.even? }
+# Rescued exception while waiting: Wait::NoResultError: result was false
+# Attempt 1/5 failed, delaying for 1s
 # => true
 ```
 
-By default, all exceptions are rescued (the `Exception` class). However, the exception from the last attempt made is always raised.
+If you wish to handle an exception by attempting the block again, pass one or an array of exceptions with the `:rescue` option.
 
 ```ruby
-wait = Wait.new(:debug => true, :attempts => 3)
+wait = Wait.new(:rescue => RuntimeError)
+# => #<Wait>
 wait.until do |attempt|
-  (attempt == 3) ? raise('raised!') : raise('rescued!')
+  case attempt
+  when 1 then nil
+  when 2 then raise RuntimeError
+  when 3 then 'foo'
+  end
 end
-# => Rescued exception while waiting: RuntimeError: rescued!
-# => Attempt 1/3 failed, delaying for 1s
-# => Rescued exception while waiting: RuntimeError: rescued!
-# => Attempt 2/3 failed, delaying for 2s
-# => Rescued exception while waiting: RuntimeError: raised!
-# => RuntimeError: raised!
+# Rescued exception while waiting: Wait::NoResultError: result was nil
+# Attempt 1/5 failed, delaying for 1s
+# Rescued exception while waiting: RuntimeError: RuntimeError
+# Attempt 2/5 failed, delaying for 2s
+# => "foo"
 ```
 
 ## Options
 
-* __*:attempts*__ Number of times to attempt the block. Default is `5`.
-* __*:timeout*__ Seconds the block is permitted to execute. Default is `15`.
-* __*:delay*__ Initial (grows exponentially) number of seconds to wait in between attempts. Default is `1`.
-* __*:rescue*__ One or an array of exceptions to rescue. Default is `Exception` (all exceptions).
-* __*:debug*__ If `true`, logs debugging output. Default is `false`.
+<dl>
+  <dt>:attempts</dt>
+  <dd>Number of times to attempt the block. Default is <code>5</code>.</dd>
+  <dt>:timeout</dt>
+  <dd>Seconds until the block times out. Default is <code>15</code>.</dd>
+  <dt>:delay</dt>
+  <dd>Initial (grows exponentially) delay (in seconds) to wait in between attempts. Default is <code>1</code>.</dd>
+  <dt>:rescue</dt>
+  <dd>One or an array of exceptions to rescue. Default is <code>nil</code>.</dd>
+  <dt>:debug</dt>
+  <dd>If <code>true</code>, logs debugging output. Default is <code>false</code>.</dd>
+</dl>
 
 ## Documentation
 
-RDoc-formatted documentation available [here](http://foursquare.github.com/wait/).
+RDoc-generated documentation available [here](http://foursquare.github.com/wait/).
