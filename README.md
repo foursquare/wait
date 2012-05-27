@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/foursquare/wait.png)](http://travis-ci.org/foursquare/wait)
+
 ## Description
 
 The wait gem executes a block until there's a result. Useful for blocking script execution until:
