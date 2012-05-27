@@ -90,12 +90,16 @@
     
 <p>source :rubygems</p>
 
-<p>gem ‘test-unit’, :require =&gt; ‘test/unit’ gem ‘ci_reporter’, :require
-=&gt; ‘ci/reporter/rake/test_unit’</p>
+<p>group :test do</p>
 
-<p># <a
-href="https://github.com/averell23/gokdok">github.com/averell23/gokdok</a>
-gem ‘gokdok’</p>
+<pre>gem 'rake'
+gem 'test-unit', :require =&gt; 'test/unit'
+gem 'ci_reporter', :require =&gt; 'ci/reporter/rake/test_unit'
+
+# https://github.com/averell23/gokdok
+gem 'gokdok'</pre>
+
+<p>end</p>
 
   </div>
 

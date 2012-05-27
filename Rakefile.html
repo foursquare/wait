@@ -88,8 +88,20 @@
 
   <div id="documentation">
     
-<p>require ‘rake/testtask’ require ‘rdoc/task’ require ‘bundler/setup’
-Bundler.require</p>
+<p>require ‘rake/testtask’</p>
+
+<p># RDocTask is deprecated, but RDoc::Task is not available in Ruby 1.8.7.
+begin</p>
+
+<pre>require 'rdoc/task'</pre>
+
+<p>rescue LoadError</p>
+
+<pre>require 'rake/rdoctask'</pre>
+
+<p>end</p>
+
+<p>require ‘bundler/setup’ Bundler.require(:test)</p>
 
 <p>Rake::TestTask.new do |task|</p>
 
