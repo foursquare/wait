@@ -68,10 +68,10 @@ class WaitTest < Test::Unit::TestCase
       attempt == 4
     end
 
-    assert_equal 0,          (t[1] - t[0]).round(1)
-    assert_equal delay,      (t[2] - t[1]).round(1)
-    assert_equal delay *= 2, (t[3] - t[2]).round(1)
-    assert_equal delay *= 2, (t[4] - t[3]).round(1)
+    assert_equal 0,          ((t[1] - t[0]) * 10).round / 10.0
+    assert_equal delay,      ((t[2] - t[1]) * 10).round / 10.0
+    assert_equal delay *= 2, ((t[3] - t[2]) * 10).round / 10.0
+    assert_equal delay *= 2, ((t[4] - t[3]) * 10).round / 10.0
   end
 
   # Test that a +nil+ result is rescued.
