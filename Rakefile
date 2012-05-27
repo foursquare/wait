@@ -1,5 +1,12 @@
 require 'rake/testtask'
-require 'rdoc/task'
+
+# RDocTask is deprecated, but RDoc::Task is not available in Ruby 1.8.7.
+begin
+  require 'rdoc/task'
+rescue LoadError
+  require 'rake/rdoctask'
+end
+
 require 'bundler/setup'
 Bundler.require(:test)
 
